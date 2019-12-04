@@ -30,6 +30,6 @@ urlpatterns = [
     # path('register/', RegisterList.as_view()),
     # path('register/<int:pk>/', RegisterDetail.as_view()),
     path('users/', include('users.urls', namespace='users')),
-    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('cities/', include('cities_light.contrib.restframework3')),
 ]
