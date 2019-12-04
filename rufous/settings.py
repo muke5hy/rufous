@@ -139,4 +139,4 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.Users'

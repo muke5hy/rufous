@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.conf import settings
 
-class User(AbstractUser):
+class Users(AbstractUser):
     
     USER = 1
     VENDOR = 2
@@ -29,7 +29,7 @@ class User(AbstractUser):
         return "{}".format(self.email)
 
 
-class UserProfile(models.Model):
+class UsersProfile(models.Model):
 
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
     title = models.CharField(max_length=5)
@@ -39,8 +39,8 @@ class UserProfile(models.Model):
     zip = models.CharField(max_length=5)
     photo = models.ImageField(upload_to='uploads', blank=True)
 
-@receiver(post_save, sender=User)
+@receiver(post_save, sender=Users)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserProfile.objects.create(user=instance)
+        UsersProfile.objects.create(user=instance)
     instance.profile.save()

@@ -1,17 +1,16 @@
-from rest_auth.registration.serializers import RegisterSerializer
 from rest_framework import serializers
-from .models import User, UserProfile
+from .models import Users, UsersProfile
 
 
-class UserSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = User
-        fields = ['username','first_name','last_name','email','name','role']
-
-
-class UserProfileerializer(serializers.ModelSerializer):
+class UsersSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = UserProfile
+        model = Users
+        fields = ['username','first_name','last_name','email','role']
+
+
+class UsersProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UsersProfile
         fields = ['user','title','address','country','city','zip','photo']

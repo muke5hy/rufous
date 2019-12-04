@@ -2,15 +2,15 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User, UserProfile
+from .models import Users, UsersProfile
 
 
 class UserProfileInline(admin.StackedInline):
-    model = UserProfile
+    model = UsersProfile
     can_delete = False
 
 
-@admin.register(User)
+@admin.register(Users)
 class UserAdmin(BaseUserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
