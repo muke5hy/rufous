@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'register',
     'users',
     'cities_light',
-    'rest_framework_swagger',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +137,11 @@ REST_FRAMEWORK = {
 		'users.authentication.FirebaseAuthentication',
 	),
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+        'rest_framework.parsers.JSONParser',
+    ]
 }
 
 AUTH_USER_MODEL = 'users.Users'
