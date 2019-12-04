@@ -33,12 +33,15 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.contenttypes',  
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'register'
+    'register',
+    'users',
+    'cities_light',
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -133,4 +136,7 @@ REST_FRAMEWORK = {
 		'rest_framework.authentication.BasicAuthentication', # default
 		'users.authentication.FirebaseAuthentication',
 	),
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
+
+AUTH_USER_MODEL = 'users.User'
