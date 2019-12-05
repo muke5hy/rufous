@@ -1,10 +1,6 @@
-from django.urls import include, path
-from .views import UserDetail, UserList, UsersProfileDetail
-
-app_name = 'users'
+from .views import UserView
+from django.urls import path
 
 urlpatterns = [
-  path('profile/<int:pk>/', UsersProfileDetail.as_view(), name='index'),
-  path('', UserList.as_view()),
-  path('<int:pk>/', UserDetail.as_view()),
+    path('get/', UserView.as_view()),
 ]

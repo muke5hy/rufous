@@ -1,22 +1,16 @@
-from rest_framework import serializers
-from .models import Users, UsersProfile
-from django.utils.translation import ugettext_lazy as _
+from rest_framework.serializers import ModelSerializer
+from .models import User, Profile
 
 
-class UsersSerializer(serializers.ModelSerializer):
+class ProfileSerializer(ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ('name', 'photo_url',)
 
-    username = serializers.CharField(max_length=255, required=True)
-    first_name = serializers.CharField(max_length=255, required=True)
-    last_name = serializers.CharField(max_length=255, required=True)
-    email = serializers.EmailField(required=True)
+
+class UserSerializer(ModelSerializer):
+    profile = ProfileSerializer()
 
     class Meta:
-        model = Users
-        fields = ['username','first_name','last_name','email','role']
-
-
-class UsersProfileSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = UsersProfile
-        fields = ['user','title','address','country','city','zip','photo']
+        model = User
+        fields = ('email', 'profile', 'username', 'last_login',)
